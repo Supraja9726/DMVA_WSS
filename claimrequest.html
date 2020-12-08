@@ -29,12 +29,63 @@
               <p class="navlinks"><a href="home.html">Home</a></p>
             </div>            
           </header>
-          <p class="headertext">File your Claim</p>
-          <section id="content">
-           
-
-
-            <!-- ********************** Begin Pega content ********************** -->
+         <section id="content">
+            <div id="search-case"></div>
+            <script>  
+              function getQueryVariable(variable) {
+              var query = window.location.search.substring(1);
+              var vars = query.split("&");
+              for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                  return pair[1];
+                }
+              }
+              console.log('Query Variable ' + variable + ' not found');
+            }
+             
+            function loadMashup(casevalue) {           
+                       
+             
+            var assignmentKey = "ASSIGN-WORKLIST DMVA-NC-WORK " + casevalue + "!COLLECTGENERALINFORMATION";
+             
+            console.log(assignmentKey);
+             
+            var snippetDiv = document.createElement("div");
+             
+            snippetDiv.setAttribute("id", "mashhed");
+            snippetDiv.setAttribute("style", "height:600px;");
+            snippetDiv.setAttribute("data-pega-gadgetname", "PegaGadgets");
+            snippetDiv.setAttribute("data-pega-action", "openAssignment");
+            snippetDiv.setAttribute("data-pega-action-param-key", assignmentKey);
+            snippetDiv.setAttribute("data-pega-isdeferloaded", "false");
+            snippetDiv.setAttribute("data-pega-threadname", "STANDARD");
+            snippetDiv.setAttribute("data-pega-applicationname", "NC");
+            snippetDiv.setAttribute("data-pega-resizetype", "fixed");
+            snippetDiv.setAttribute("data-pega-url", "https://ipdemo.sbyteapps.com:8443/prweb/app/NC_2037/");
+            snippetDiv.setAttribute("data-pega-action-param-parameters", '{\"UserIndentifier\": \"Stefan@DMVA\",\"Password\": \"cnVsZXM=\",\"pzSkinName\":\"ClaritySkin_PictonBlue\",\"pyMashupSkeletonName\":\"pyDefaultMashupSkeleton\"}');
+            snippetDiv.setAttribute("data-pega-redirectguests", "false");
+            document.getElementById("search-case").appendChild(snippetDiv);
+             
+            //trigger mashup loading explicitly in asyn case
+             
+            _initAllPegaObjects();
+             
+            }
+             
+            var caseid = getQueryVariable("caseid");
+            if(caseid!=""){
+              loadMashup(caseid);
+            }
+            else{
+                $("#msg").show();
+            }
+            console.log(caseid);
+            </script>
+          </section>
+          <section id="content" id="msg">
+          <p class="headertext">Pending Actions</p>
+          <!-- ********************** Begin Pega content ********************** -->
 <script src ='https://ipdemo.sbyteapps.com:8443/prweb/app/NC_2037/?pyActivity=pzIncludeMashupScripts'></script>
 <div data-pega-gadgetname ='PegaGadget' 
 data-pega-action ='display' 
