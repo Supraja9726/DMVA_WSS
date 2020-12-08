@@ -69,18 +69,31 @@
              
             //trigger mashup loading explicitly in asyn case
              
-            _initAllPegaObjects();
-             
+                      
             }
              
-            var caseid = getQueryVariable("caseid");
+           var field = 'caseid';
+var url = window.location.href;
+if(url.indexOf('?' + field + '=') != -1){
+  var caseid = getQueryVariable("caseid");
             if(caseid!=""){
+              
               loadMashup(caseid);
+              
             }
             else{
+              
                 $("#msg").show();
             }
             console.log(caseid);
+}
+    
+else
+{
+  $("#msg").show();
+}
+       
+          
             </script>
           </section>
           <section id="content" id="msg">
