@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <script type="text/javascript" src="js/jquery-1.4.2.js" ></script>
+<script src="/js/clearSession.js"></script>
+
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/ie6_script_other.js"></script>
 <script type="text/javascript" src="js/html5.js"></script>
@@ -25,7 +27,7 @@
             <div style="background:url(../images/menu_line.jpg) right top no-repeat;">
               <figure class="left marg_right1"><img src="images/DMVA-Seal.png" alt="" width="70px" height="70px" style="padding-top: 5px;"></figure>
               <a href="home.html"  style="width: auto;float:left;">DEPARTMENT OF MILITARY AND VETERAN AFFAIRS</a>
-              <p class="navlinks"><a href="index.html">Log Out</a></p>
+              <p class="navlinks" onclick="clearSessionStorage()"><a href="index.html">Log Out</a></p>
               <p class="navlinks"><a href="contacts.html">Contact us</a></p>
               <p class="navlinks"><a href="claimrequest.html">Benefit Request</a></p>
               <p id="menu_active" class="navlinks"><a href="home.html">Home</a></p>
